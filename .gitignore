@@ -26,3 +26,7 @@ node_modules/
 
 # Ignore __pycache__/ directory (created by Python)
 __pycache__/
+
+
+# Ignore ipynb files with name starting as scratchpad
+scratchpad*.ipynb
