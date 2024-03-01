@@ -1,0 +1,21 @@
+# Ignore .DS_Store files (created by macOS)
+.DS_Store
+
+# Ignore .env files (commonly used for environment variables)
+.env
+
+# Ignore dist/ directory (commonly used for distribution files)
+dist/
+
+# Ignore .cache files and directories (commonly used by various tools)
+*.cache
+*.cache/
+
+# Ignore .idea directory (created by JetBrains IDEs)
+.idea/
+
+# Ignore build/ directory (commonly used for build artifacts)
+build/
+
+# Ignore .vscode directory (created by Visual Studio Code)
+.vscode/
