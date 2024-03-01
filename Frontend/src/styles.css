@@ -77,12 +77,14 @@ body {
     padding-bottom: 128px;
 }
 
-.input-bar input {
-    padding: 24px 32px;
+.input-bar form {
+    display: flex;
+    flex-direction: row;
     outline: 0;
     border: 0;
     font-family:"Anybody", sans-serif;
 }
+
 
 .input-bar button {
     border: 0;

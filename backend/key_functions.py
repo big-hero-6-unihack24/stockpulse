@@ -4,6 +4,12 @@ import pandas as pd
 import tensorflow as tf
 import numpy as np
 
+tickers = pd.read_excel('IR_website_links.xlsx', sheet_name='Sheet1')
+tickers = tickers["Ticker"].to_list()
+
+def get_ticker_options():
+    return {'Tickers': tickers}
+
 def get_stock_warning(ticker='GOOG', threshold=0.001):
 
     attempts = 0
@@ -31,3 +37,4 @@ def get_stock_warning(ticker='GOOG', threshold=0.001):
     
     return {'Prediction': prediction,
             'Summary': result['Summary']}
+

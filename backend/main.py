@@ -5,6 +5,7 @@ from pydantic import BaseModel
 import key_functions
 import schemas
 from config import cors_allowed_origins_list
+from typing import List
 
 # Create a FastAPI app
 app = FastAPI()
@@ -29,3 +30,7 @@ def read_root():
 @app.get('/warning', response_model=schemas.warning)
 def warning(ticker: str, threshold: float = 0.001):
     return key_functions.get_stock_warning(ticker, threshold)
+
+@app.get('/ticker-options', response_model=schemas.TickerOptions)
+async def get_ticker_options():
+    return key_functions.get_ticker_options()
