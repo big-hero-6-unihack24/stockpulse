@@ -2,7 +2,8 @@
 .DS_Store
 
 # Ignore .env files (commonly used for environment variables)
-.env
+.env/
+*env/
 
 # Ignore dist/ directory (commonly used for distribution files)
 dist/
