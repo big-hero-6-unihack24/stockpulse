@@ -17,7 +17,28 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env/
+*env/
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Ignore dist/ directory (commonly used for distribution files)
+dist/
+
+# Ignore .cache files and directories (commonly used by various tools)
+*.cache
+*.cache/
+
+# Ignore .idea directory (created by JetBrains IDEs)
+.idea/
+
+# Ignore .vscode directory (created by Visual Studio Code)
+.vscode/
+
+# Ignore __pycache__/ directory (created by Python)
+__pycache__/
+
+# Ignore ipynb files with name starting as scratchpad
+scratchpad*.ipynb
