@@ -7,11 +7,28 @@ import numpy as np
 tickers = pd.read_excel('IR_website_links.xlsx', sheet_name='Sheet1')
 tickers = tickers["Ticker"].to_list()
 
+user_email = 'abc@xyz.com'
+tracking_tickers = []
+
 def get_ticker_options():
     return {'Tickers': tickers}
 
-def get_stock_warning(ticker='GOOG', threshold=0.001):
+def add_track(ticker):
+    try:
+        tracking_tickers.append(ticker)
+        return {'Status': 'Successfully added'}
+    except Exception as e:
+        return {'Status': 'Failed to add ticker'}
+    
+def remove_track(ticker):
+    try:
+        tracking_tickers.remove(ticker)
+        return {'Status': 'Successfully removed'}
+    except Exception as e:
+        return {'Status': 'Failed to remove ticker'}
 
+
+def get_stock_warning(ticker='GOOG', threshold=0.001):
     attempts = 0
     while attempts < 3:
         try:

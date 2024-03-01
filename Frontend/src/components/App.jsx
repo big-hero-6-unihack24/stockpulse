@@ -9,7 +9,7 @@ function App() {
     return (
         <div>
             <LogoBar/>
-            <Header tagline="Revolutionize your trading with real-time, data-driven insights and alerts on the stock movements post-earnings."/>
+            <Header tagline="Revolutionize your investments with real-time, data-driven insights and alerts on the stock movements post-earnings."/>
             <Input/>
             <Dashboard/>
 

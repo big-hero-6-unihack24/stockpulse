@@ -34,3 +34,26 @@ def warning(ticker: str, threshold: float = 0.001):
 @app.get('/ticker-options', response_model=schemas.TickerOptions)
 async def get_ticker_options():
     return key_functions.get_ticker_options()
+
+@app.post('/newtrack', response_model=schemas.newtrackresponse)
+async def add_track(ticker: str):
+    response = key_functions.add_track(ticker)
+    return response
+
+@app.get('/tracking-tickers', response_model=schemas.tracking_tickers)
+async def get_tracking_tickers():
+    return {'Tickers': key_functions.tracking_tickers}
+
+@app.post('/removetrack', response_model=schemas.removetrackresponse)
+async def remove_track(ticker: str):
+    response = key_functions.remove_track(ticker)
+    return response
+
+@app.post('/update-email', response_model=schemas.newtrackresponse)
+async def update_email(email: str):
+    key_functions.user_email = email
+    return {'Status': 'Email updated'}
+
+@app.get('/get-email', response_model=schemas.get_email_response)
+async def get_email():
+    return {'Email': key_functions.user_email}

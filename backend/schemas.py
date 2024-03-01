@@ -7,3 +7,15 @@ class warning(BaseModel):
 
 class TickerOptions(BaseModel):
     Tickers: List[str]
+
+class newtrackresponse(BaseModel):
+    Status: str
+
+class tracking_tickers(BaseModel):
+    Tickers: List[str]
+
+class removetrackresponse(BaseModel):
+    Status: str
+
+class get_email_response(BaseModel):
+    Email: str
