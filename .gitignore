@@ -20,3 +20,9 @@ build/
 
 # Ignore .vscode directory (created by Visual Studio Code)
 .vscode/
+
+# Ignore node_modules/ directory (created by npm)
+node_modules/
+
+# Ignore __pycache__/ directory (created by Python)
+__pycache__/
