@@ -5,7 +5,18 @@ import tensorflow as tf
 import numpy as np
 
 def get_stock_warning(ticker='GOOG', threshold=0.001):
-    result = parse_earnings_release(ticker)
+
+    attempts = 0
+    while attempts < 3:
+        try:
+            result = parse_earnings_release(ticker)
+            break
+        except Exception as e:
+            attempts += 1
+            if attempts == 3:
+                return None
+
+
     estimates = yf.Ticker(ticker).earnings_dates
     estimates = estimates.reset_index()
     estimates = estimates.dropna()
@@ -18,9 +29,5 @@ def get_stock_warning(ticker='GOOG', threshold=0.001):
     model = tf.keras.models.load_model('stock_warning_model.keras')
     prediction = model.predict(EPS_surprise)[0][0]
     
-    if prediction < threshold:
-        return {'Prediction': None,
-            'Summary': None}
-
     return {'Prediction': prediction,
             'Summary': result['Summary']}

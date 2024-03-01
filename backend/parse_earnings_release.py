@@ -26,30 +26,32 @@ def extract_financials_info_from_earning_release_using_GPT(text):
   client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
   instruction = "You are an assistant helping me to extract financial information from earnings releases of companies. Attachment will be provided.\
-              Firstly, I will need quarterly revenue growth and earning per shares.\
-              Secondly, I also need a summary of the earnings release regarding revenue, margin and guidance for revenue growth this year if any numbers are provided. \
-              Provide 1 sentence summary for each factor. \
-              Response should be in this format: rev_grwth: x.xx%; EPS: $y; Summary: '\n First point \n Second point ...."
+            Firstly, I will need quarterly revenue growth and earning per shares.\
+            Secondly, I also need a summary of the earnings release regarding revenue, margin and guidance for revenue growth this year if any numbers are provided. \
+            Provide 1 sentence summary for each factor. \
+            Response should be in this format: rev_grwth: x%; EPS: $y; Summary: \n First point \n Second point .... \
+            All numbers should be rounded to 2 decimal places. Negative numbers should be indicated with a minus sign."
 
   completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
       {"role": "system", "content": instruction},
       {"role": "user", "content": text}
-    ]
+    ],
+    temperature=0.2
   )
 
-  response = completion.choices[0].message.content.split("\n\n")
+  response = completion.choices[0].message.content
   
   #convert the response to a dictionary
   result = {}
-  for r in response[0].split(";"):
+  for r in response.split(";"):
     key, value = r.split(":")
     key = key.strip()
     value = value.strip()
-    if "rev" in key:
+    if key == "rev_grwth":
         value = float(value.strip().replace("%", ""))/100
-    elif "EPS" in key:
+    elif key == "EPS" in key:
         value = float(value.strip().replace("$", ""))
     result[key] = value
 
