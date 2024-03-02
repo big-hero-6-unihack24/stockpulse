@@ -22,3 +22,10 @@ class removetrackresponse(BaseModel):
 
 class get_email_response(BaseModel):
     Email: str
+
+class debug(BaseModel):
+    tracking_tickers: List[Optional[str]]
+    user_email: str
+    allowed_origins: List[str]
+    allowed_hosts: List[str]
+    containter_tag: str

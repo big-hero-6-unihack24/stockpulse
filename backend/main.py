@@ -59,3 +59,15 @@ async def update_email(email: str):
 @app.get('/get-email', response_model=schemas.get_email_response)
 async def get_email():
     return {'Email': key_functions.user_email}
+
+@app.get('/debug', response_model=schemas.debug)
+async def debug():
+    return {'tracking_tickers': key_functions.tracking_tickers, 
+            'user_email': key_functions.user_email,
+            'allowed_origins': cors_allowed_origins_list,
+            'allowed_hosts': cors_allowed_hosts_list,
+            'containter_tag': 'v7'}
+
+
+
+

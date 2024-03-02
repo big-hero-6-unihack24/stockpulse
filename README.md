@@ -1,5 +1,22 @@
-# stockpulse
+# StockPulse
 Revolutionize your trading with real-time, data-driven insights and alerts on the stock movements post-earnings.
+
+# Inspiration
+Are you a fundamental stock investor? We are. And we are sure many of us are also.
+
+But do you keep track of financial performance of all companies you invested? Do you stay on at night waiting for quarter financials of a US company to be released? Busy with study or work or travel, we some times do not have time to track the FUNDAMENTAL timely. And one of those time.... one of our share crashed. Hedge funds, big investors had sell off things before you are aware of the bad news.
+
+# What it does
+Description of the product
+Stockpulse wi
+
+Target audience
+What problem does it solve
+What makes this product unique
+
+
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

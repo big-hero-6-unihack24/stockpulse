@@ -16,7 +16,7 @@ from email_boilerplate import html_content
 tickers = pd.read_excel('IR_website_links.xlsx', sheet_name='Sheet1')
 ticker_list = tickers["Ticker"].to_list()
 
-user_email = 'hdanh93@gmail.com'
+user_email = 'abc@xyz.com'
 tracking_tickers = []
 
 def get_ticker_options():
