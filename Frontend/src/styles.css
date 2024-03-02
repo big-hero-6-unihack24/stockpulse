@@ -14,7 +14,24 @@ body {
 .logo-container {
     padding: 48px 138px;
     background-color: #DDE4E5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
+.user-email {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.email-input {
+    padding: 12px;
+    border: 0;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
 
 .logo h3 {
     display: flex;
@@ -76,6 +93,9 @@ body {
     height: 10vh;
     padding-bottom: 128px;
 }
+.select-container {
+    min-width: 300px;
+}
 
 .input-bar form {
     display: flex;
@@ -86,6 +106,16 @@ body {
 }
 
 
+.input-bar input {
+    padding: 24px 32px;
+    outline: 0;
+    border: 0;
+    font-family:"Anybody", sans-serif;
+}
+
+.email-input {
+    font-family:"Anybody", sans-serif;
+}
 .input-bar button {
     border: 0;
     padding: 24px 16px;
@@ -115,7 +145,6 @@ body {
     margin-right: 8px;
    
  
-  
 }
 
 .investor-relation {
