@@ -45,6 +45,13 @@ jobs:
               run: npm install
               working-directory: Frontend
 
+            # Step to setup .env file
+            - name: Setup .env
+              run: |
+                echo REACT_APP_BACKEND_URL=${{ env.REACT_APP_BACKEND_URL }} >> Frontend/.env
+                echo REACT_APP_BACKEND_URL=${{ env.REACT_APP_BACKEND_URL }}
+              shell: bash
+
             # Step to build your React app
             - name: Build React app
               run: npm run build
@@ -65,3 +72,6 @@ jobs:
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4
+              
+              
+              
