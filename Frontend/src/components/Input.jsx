@@ -12,7 +12,7 @@ function Input() {
 
     useEffect(() => {
         fetchTickerOptions();
-      }, []);
+      });
 
     const fetchTickerOptions = async (ticker) => {
     try {

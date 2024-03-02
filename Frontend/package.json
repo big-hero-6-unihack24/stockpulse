@@ -2,7 +2,7 @@
   "name": "stockpulse",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/big-hero-6-unihack24/stockpulse",
+  "homepage": "https://big-hero-6-unihack24.github.io/stockpulse",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

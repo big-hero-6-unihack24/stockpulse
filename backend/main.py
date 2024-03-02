@@ -31,12 +31,8 @@ def read_root():
 @app.get('/warning', response_model=schemas.warning)
 def warning(ticker: str, threshold: float = 0.001):
     response = key_functions.get_stock_warning(ticker, threshold)
-    if response:
-        return response
-    else:
-        key = os.getenv('OPENAI_API_KEY')[-5:]
-        return {'Prediction': None, 'Summary': None, 'Key': key}
-
+    return response
+    
 @app.get('/ticker-options', response_model=schemas.TickerOptions)
 async def get_ticker_options():
     return key_functions.get_ticker_options()

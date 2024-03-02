@@ -5,13 +5,13 @@ on:
         branches:
             - main
         paths:
-            - 'frontend/**'
+            - 'Frontend/**'
     pull_request:
         types: [opened, synchronize, reopened, closed]
         branches:
             - main
         paths:
-            - 'frontend/**'
+            - 'Frontend/**'
   
     workflow_dispatch:
 
@@ -43,12 +43,22 @@ jobs:
             # Step to install dependencies
             - name: Install dependencies
               run: npm install
-              working-directory: ./frontend
+              working-directory: Frontend
+
+            # Step to setup .env file
+            - name: Setup .env
+              run: |
+                echo REACT_APP_BACKEND_URL=${{ env.REACT_APP_BACKEND_URL }} >> Frontend/.env
+                echo REACT_APP_BACKEND_URL=${{ env.REACT_APP_BACKEND_URL }}
+              shell: bash
 
             # Step to build your React app
             - name: Build React app
               run: npm run build
-              working-directory: ./frontend
+              working-directory: Frontend
+              env:
+                CI: false
+              
 
         # Adjust the path to point to the build directory of your React app
             - name: Setup Pages
@@ -57,8 +67,11 @@ jobs:
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                path: './frontend/build' # Path to the build directory of your React app
+                path: './Frontend/build' # Path to the build directory of your React app
 
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4
+              
+              
+              
