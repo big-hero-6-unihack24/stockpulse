@@ -56,7 +56,7 @@ def get_stock_warning(ticker='GOOG', threshold=0.001):
     model = tf.keras.models.load_model('stock_warning_model.keras')
     prediction = model.predict(EPS_surprise)[0][0]
     if prediction > threshold:
-        email_warning(ticker, prediction, result['Summary'], company_name)
+        email_warning(ticker, prediction, result['Summary'], tickers[tickers['Ticker'] == ticker]['Company'].values[0])
     
     return {'Ticker': ticker,
             'Company': tickers[tickers['Ticker'] == ticker]['Company'].values[0],
@@ -266,5 +266,5 @@ def email_warning(ticker, prediction, summary, company_name):
 
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-        smtp.login(sender_email, password)
+        smtp.login(sender_email, os.getenv('email_password'))
         smtp.sendmail(sender_email, user_email, em.as_string())
