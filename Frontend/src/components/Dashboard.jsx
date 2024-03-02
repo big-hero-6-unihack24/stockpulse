@@ -3,9 +3,9 @@ import "../styles.css";
 import { SlCloudDownload } from "react-icons/sl";
 import { IoAdd } from "react-icons/io5";
 import TrackingForm from "./TrackingForm";
-import SummaryEarn from "./SummaryEarn";
+import LatestWarn from "./LatestWarn";
 
-function Dashboard() {
+function Dashboard({ selectedTickers }) {
     return(
         <div className="dashboard-container">
             <div className="dashboard-heading">
@@ -22,8 +22,8 @@ function Dashboard() {
 
             </div>
             <div className="dashboard-table">
-                <div><TrackingForm/></div>
-                <div><SummaryEarn/></div>
+                <div><TrackingForm selectedTickers={selectedTickers}/></div>
+                <div><LatestWarn/></div>
 
             </div>
 
