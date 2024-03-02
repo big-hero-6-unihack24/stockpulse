@@ -1,14 +1,22 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from parse_earnings_release import parse_earnings_release
 import yfinance as yf
 import pandas as pd
 import tensorflow as tf
 import numpy as np
 import os
+from email.message import EmailMessage
+import smtplib
+import ssl
+import datetime
+from email_boilerplate import html_content
 
 tickers = pd.read_excel('IR_website_links.xlsx', sheet_name='Sheet1')
 ticker_list = tickers["Ticker"].to_list()
 
-user_email = 'abc@xyz.com'
+user_email = 'hdanh93@gmail.com'
 tracking_tickers = []
 
 def get_ticker_options():
@@ -51,6 +59,9 @@ def get_stock_warning(ticker='GOOG', threshold=0.001):
     EPS_surprise = np.array([EPS_surprise]).reshape(-1, 1)
     model = tf.keras.models.load_model('stock_warning_model.keras')
     prediction = model.predict(EPS_surprise)[0][0]
+
+    if prediction > threshold:
+        email_warning(ticker, prediction, result['Summary'], tickers[tickers['Ticker'] == ticker]['Company'].values[0])
     
     return {'Ticker': ticker,
             'Company': tickers[tickers['Ticker'] == ticker]['Company'].values[0],
@@ -59,3 +70,31 @@ def get_stock_warning(ticker='GOOG', threshold=0.001):
             'Key': os.getenv('OPENAI_API_KEY')[-3:]}
             
 
+
+def email_warning(ticker, prediction, summary, company_name):
+    sender_email = "coding.test.projects@gmail.com"
+    subject = "STOCK ALERT. DRASTIC CHANGE"
+    message = """STOCK ALERT. DRASTIC CHANGE"""
+
+    em = EmailMessage()
+    em['From'] = sender_email
+    em['To'] = user_email
+    em['subject'] = subject
+    em.set_content(message)
+
+    stock_name = ticker
+    percent_change = round(prediction * 100, 2)
+    percent_change = str(percent_change) + "%"
+
+    current_datetime = datetime.datetime.now()
+    latest_warning = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    percent_change = round(prediction * 100, 2)
+
+    email_content = html_content.format(stock_name, company_name, percent_change, latest_warning, summary)
+
+    em.add_alternative(email_content, subtype='html')
+
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+        smtp.login(sender_email, os.getenv('email_password'))
+        smtp.sendmail(sender_email, user_email, em.as_string())
