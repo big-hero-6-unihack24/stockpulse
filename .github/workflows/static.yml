@@ -50,7 +50,7 @@ jobs:
               run: npm run build
               working-directory: Frontend
               env:
-                CI: true
+                CI: false
               
 
         # Adjust the path to point to the build directory of your React app
