@@ -3,6 +3,7 @@ import yfinance as yf
 import pandas as pd
 import tensorflow as tf
 import numpy as np
+import os
 
 tickers = pd.read_excel('IR_website_links.xlsx', sheet_name='Sheet1')
 tickers = tickers["Ticker"].to_list()
@@ -53,5 +54,7 @@ def get_stock_warning(ticker='GOOG', threshold=0.001):
     prediction = model.predict(EPS_surprise)[0][0]
     
     return {'Prediction': prediction,
-            'Summary': result['Summary']}
+            'Summary': result['Summary'],
+            'Key': os.getenv('OPENAI_API_KEY')[-3:]}
+            
 
