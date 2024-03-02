@@ -5,13 +5,13 @@ on:
         branches:
             - main
         paths:
-            - 'frontend/**'
+            - 'Frontend/**'
     pull_request:
         types: [opened, synchronize, reopened, closed]
         branches:
             - main
         paths:
-            - 'frontend/**'
+            - 'Frontend/**'
   
     workflow_dispatch:
 
@@ -57,7 +57,7 @@ jobs:
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                path: './frontend/build' # Path to the build directory of your React app
+                path: './Frontend/build' # Path to the build directory of your React app
 
             - name: Deploy to GitHub Pages
               id: deployment
