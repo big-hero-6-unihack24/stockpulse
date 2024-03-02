@@ -43,12 +43,12 @@ jobs:
             # Step to install dependencies
             - name: Install dependencies
               run: npm install
-              working-directory: frontend
+              working-directory: Frontend
 
             # Step to build your React app
             - name: Build React app
               run: npm run build
-              working-directory: frontend
+              working-directory: Frontend
 
         # Adjust the path to point to the build directory of your React app
             - name: Setup Pages
