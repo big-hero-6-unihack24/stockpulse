@@ -12,7 +12,7 @@ const SummaryEarn = () => {
 
     useEffect(() => {
         fetchWarning(ticker, threshold);
-    }, []);
+    });
 
     const fetchWarning = async (ticker, threshold) => {
         try {
