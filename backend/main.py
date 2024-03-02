@@ -4,16 +4,16 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from pydantic import BaseModel
 import key_functions
 import schemas
-from config import cors_allowed_origins_list
+from config import cors_allowed_origins_list, cors_allowed_hosts_list
 from typing import List
 
 # Create a FastAPI app
 app = FastAPI()
 
-app.add_middleware(
-     TrustedHostMiddleware, 
-     allowed_hosts=["localhost", "127.0.0.1"]
-) #add backend host when deployed to Azure
+# app.add_middleware(
+#      TrustedHostMiddleware, 
+#      allowed_hosts=cors_allowed_hosts_list
+# ) #add backend host when deployed to Azure
 
 app.add_middleware(
     CORSMiddleware,
