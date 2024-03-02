@@ -1,0 +1,64 @@
+name: Deploy React App to GitHub Pages
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - 'frontend/**'
+    pull_request:
+        types: [opened, synchronize, reopened, closed]
+        branches:
+            - main
+        paths:
+            - 'frontend/**'
+  
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+concurrency:
+    group: "pages"
+    cancel-in-progress: false
+
+jobs:
+    deploy:
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            # Step to setup Node.js environment
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: '16' # Specify the Node.js version you want to use
+
+            # Step to install dependencies
+            - name: Install dependencies
+              run: npm install
+              working-directory: ./frontend
+
+            # Step to build your React app
+            - name: Build React app
+              run: npm run build
+              working-directory: ./frontend
+
+        # Adjust the path to point to the build directory of your React app
+            - name: Setup Pages
+              uses: actions/configure-pages@v4
+
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: './frontend/build' # Path to the build directory of your React app
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
