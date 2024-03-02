@@ -2,35 +2,46 @@ import React, { useState, useEffect } from 'react';
 import "../styles.css";
 import axios from 'axios';
 
-const SummaryEarn = () => {
+const LatestWarn = () => {
     const [warning, setWarning] = useState(null);
     // const [ticker, setTicker] = useState('');
     // const [threshold, setThreshold] = useState('');
 
+    const [warningDate, setWarningDate] = useState('');
+
     let ticker = 'GOOG';
     let threshold = 0.001;
 
-    useEffect(() => {
-        fetchWarning(ticker, threshold);
-    });
 
+useEffect(() => {
     const fetchWarning = async (ticker, threshold) => {
         try {
             let url = `${process.env.REACT_APP_BACKEND_URL}/warning?ticker=${ticker}&threshold=${threshold}`;
             const response = await axios.get(url);
-            setWarning(response.data);
-            console.log('response: ', response.data);
-            console.log('warning: ', warning);
-            return response.data;
+            if (response.data) {
+                setWarning(response.data);
+                setWarningDate(new Date().toLocaleDateString());
+            }
+          
+            // console.log('response: ', response.data);
+            // console.log('warning: ', warning);
+            // return response.data;
         } catch (error) {
             console.error('Error fetching warning: ', error);
         }
-    }
+    };
+    fetchWarning();
+
+}, [ticker, threshold]);
+    
     
 
     return (
         <div class="warning">
-            <h2>Latest warning</h2>
+        <div className='warning-day'>
+            <div><h2>Latest warning</h2></div>
+            <div><p>{warningDate}</p></div>
+        </div>
             {warning && (
                 <div>
                     <h3>{ticker}</h3>
@@ -42,4 +53,4 @@ const SummaryEarn = () => {
     )
 }
 
-export default SummaryEarn;
+export default LatestWarn;
