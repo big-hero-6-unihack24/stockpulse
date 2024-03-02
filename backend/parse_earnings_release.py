@@ -23,7 +23,7 @@ def parse_earnings_release(ticker):
 
 def extract_financials_info_from_earning_release_using_GPT(text):
 
-  client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+  client = OpenAI(api_key=os.getenv("OPENAI_API_KEY", "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"))
 
   instruction = "You are an assistant helping me to extract financial information from earnings releases of companies. Attachment will be provided.\
             Firstly, I will need quarterly revenue growth and earning per shares.\
