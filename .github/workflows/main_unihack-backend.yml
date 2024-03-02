@@ -52,9 +52,8 @@ jobs:
         with:
           name: python-app
           path: |
-            pwd
-            release.zip
-            !venv/
+            ./backend/release.zip
+            !.backend/venv/
 
   deploy:
     runs-on: ubuntu-latest
