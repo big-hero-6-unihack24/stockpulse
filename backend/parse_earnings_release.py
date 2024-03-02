@@ -1,9 +1,13 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 import requests
 import pandas as pd
 import PyPDF2
 from io import BytesIO
 import os
 from openai import OpenAI
+
 
 # use GPT-3 to extract the financial information
 def parse_earnings_release(ticker):
@@ -23,7 +27,7 @@ def parse_earnings_release(ticker):
 
 def extract_financials_info_from_earning_release_using_GPT(text):
 
-  client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+  client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
   instruction = "You are an assistant helping me to extract financial information from earnings releases of companies. Attachment will be provided.\
             Firstly, I will need quarterly revenue growth and earning per shares.\
@@ -54,5 +58,5 @@ def extract_financials_info_from_earning_release_using_GPT(text):
     elif key == "EPS" in key:
         value = float(value.strip().replace("$", ""))
     result[key] = value
-
+    
   return result

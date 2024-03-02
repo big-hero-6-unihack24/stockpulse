@@ -6,13 +6,13 @@ import numpy as np
 import os
 
 tickers = pd.read_excel('IR_website_links.xlsx', sheet_name='Sheet1')
-tickers = tickers["Ticker"].to_list()
+ticker_list = tickers["Ticker"].to_list()
 
 user_email = 'abc@xyz.com'
 tracking_tickers = []
 
 def get_ticker_options():
-    return {'Tickers': tickers}
+    return {'Tickers': ticker_list}
 
 def add_track(ticker):
     try:
@@ -40,7 +40,6 @@ def get_stock_warning(ticker='GOOG', threshold=0.001):
             if attempts == 3:
                 return None
 
-
     estimates = yf.Ticker(ticker).earnings_dates
     estimates = estimates.reset_index()
     estimates = estimates.dropna()
@@ -53,7 +52,9 @@ def get_stock_warning(ticker='GOOG', threshold=0.001):
     model = tf.keras.models.load_model('stock_warning_model.keras')
     prediction = model.predict(EPS_surprise)[0][0]
     
-    return {'Prediction': prediction,
+    return {'Ticker': ticker,
+            'Company': tickers[tickers['Ticker'] == ticker]['Company'].values[0],
+            'Prediction': prediction,
             'Summary': result['Summary'],
             'Key': os.getenv('OPENAI_API_KEY')[-3:]}
             

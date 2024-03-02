@@ -2,6 +2,8 @@ from pydantic import BaseModel
 from typing import Optional, List
 
 class warning(BaseModel):
+    Ticker: Optional[str]
+    Company: Optional[str]
     Prediction: Optional[float]
     Summary: Optional[str]
     Key: Optional[str]
