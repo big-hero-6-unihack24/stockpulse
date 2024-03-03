@@ -176,14 +176,27 @@ body {
 }
 
 .dashboard-table {
-    margin-top: 48px;
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    margin-top: 48px;
+    justify-content:space-between;
+    gap: 200px;
+
+    
+}
+.table-container {
+    width: 45%;
+}
+
+.warning {
+    width: 80%;
 }
 
 /* DASHBOARD TABLE */
 
+.table-container {
+    width: 100%;
+}
 
 table {
     font-family:"Anybody", sans-serif;
@@ -220,8 +233,68 @@ table {
     color: #5D6979;
     font-size: 12px;
   }
-
+/* LATEST WARNING */
 
 .warning {
-    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    gap: 12px;
+    padding: 48px;
+    border: 1px solid #DDE4E5;
 }
+
+.warning-day {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.warning-infor {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.warning-ticker {
+
+    margin: 32px auto;
+}
+.warning-ticker h3 {
+    font-size: 48px;
+}
+
+.warning-potential {
+   margin: auto;
+   margin-bottom: 24px;
+}
+
+.prediction-value {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.prediction-positive {
+    color: green;
+  }
+  
+  .prediction-negative {
+    color: red;
+  }
+
+  .warning-sum {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .warning-sum p {
+    color: #5D6979;
+
+  }
+
+  
+
+
+
+
+
