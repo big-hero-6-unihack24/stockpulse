@@ -1,6 +1,5 @@
 import React from "react";
 import { BsApp } from "react-icons/bs";
-import { HiOutlineArrowSmDown } from "react-icons/hi";
 import { TfiTrash } from "react-icons/tfi";
 
 import { LuPen } from "react-icons/lu";
@@ -10,12 +9,12 @@ class TrackingForm extends React.Component {
     render() {
         const { selectedTickers } = this.props;
         return (
-            <div>
-                <table className="table-container">
+            <div className="table-container">
+                <table>
                     <tr>
                         <th><BsApp /></th>
                         <th>Name</th>
-                        <th>Symbol <HiOutlineArrowSmDown /></th>
+                        <th>Symbol</th>
                     </tr>
                     {selectedTickers.map((ticker, index) => (
                         <tr key={index}>
