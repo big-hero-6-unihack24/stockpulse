@@ -5,7 +5,7 @@ import "../styles.css";
 import axios from 'axios';
 
 function LogoBar() {
-    const [email, setEmail] = useState('email@gmail.com');
+    const [email, setEmail] = useState('bighero6.unihack24@gmail.com');
     const [isEditing, setIsEditing] = useState(false);
 
    const handleEmailChange =(e) => {
