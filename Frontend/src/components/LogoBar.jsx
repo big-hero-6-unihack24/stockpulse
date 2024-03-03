@@ -13,15 +13,19 @@ function LogoBar() {
    }
 
    const updateEmail = async () => {
-        try {
-            const url = 'https://stockpulse-api.azurewebsites.net/update-email';
-            const payload = { email: email };
-            await axios.post(url, payload);
-            console.log('Email updated successfully');
-        } catch (error) {
-            console.error('Error updating email:', error);
-        }
-   };
+    try {
+        const url = 'https://stockpulse-api.azurewebsites.net/update-email';
+        const payload = { email: email }; // Ensure this matches the expected schema
+        await axios.post(url, payload, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log('Email updated successfully');
+    } catch (error) {
+        console.error('Error updating email:', error);
+    }
+};
 
 
    const saveEmail = () => {
