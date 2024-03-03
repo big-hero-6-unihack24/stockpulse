@@ -18,14 +18,14 @@ class TrackingForm extends React.Component {
                     </tr>
                     {selectedTickers.map((ticker, index) => (
                         <tr key={index}>
-                        <td><BsApp /></td>
-                        <td className="td-name">
-                            <div>{ticker.icon} </div>
-                            <div>{ticker.label}</div>
-                        </td>
-                        <td className="symbol">{ticker.value}</td>
-                        <td><TfiTrash /></td>
-                        <td><LuPen/></td>
+                            <td><BsApp /></td>
+                            <td className="td-name">
+                                <div>{ticker.icon} </div>
+                                <div>{ticker.label}</div>
+                            </td>
+                            <td className="symbol">{ticker.value}</td>
+                            <td><TfiTrash /></td>
+                            <td><LuPen/></td>
 
                         </tr>
                     ))}

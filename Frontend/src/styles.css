@@ -5,24 +5,50 @@
     padding: 0;
 }
 
+html {
+    height: 100vh;
+    
+}
+
 body {
     font-family:"Anybody", sans-serif;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body > div {
+    width: 100%;
+}
+
+.master-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 /* LOGO BAR */
 
 .logo-container {
-    padding: 48px 138px;
+    width: 100%;
+    padding: 2rem 5rem;
     background-color: #DDE4E5;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    align-items: center;
+    box-sizing: border-box;
+    border: none;
 }
+
 .user-email {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 0.8rem;
 }
 
 .email-input {
@@ -58,12 +84,14 @@ body {
 /* HEADER */
 
 .top {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 64px 0;
-    gap: 24px;
+    padding: 0 0;
+    gap: 1.5rem;
     background-color: #DDE4E5;
+    border: none;
 }
 
 .top h1 {
@@ -82,6 +110,14 @@ body {
 }
 
 /* INPUT */
+.input-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #DDE4E5;
+    border: none;
+}
 
 .input-bar {
     display: flex;
@@ -90,8 +126,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    height: 10vh;
-    padding-bottom: 128px;
+    padding: 3rem 0rem;
 }
 .select-container {
     min-width: 300px;
@@ -131,13 +166,23 @@ body {
 
 /* DASHBOARD HEADING */
 .dashboard-container {
-    padding: 64px 138px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 5rem;
+    gap: 1.5rem;
+    border: none;
+    box-sizing: border-box;
 }
 
 .dashboard-heading {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .your-dashboard {
@@ -178,33 +223,38 @@ body {
 .dashboard-table {
     width: 100%;
     display: flex;
-    margin-top: 48px;
+    margin-top: 3rem;
     justify-content:space-between;
-    gap: 200px;
-
-    
+    gap: 5rem;
 }
+
 .table-container {
-    width: 45%;
+    flex: 2;
+    display: flex;
+    min-width: 40%;
+    border: 0.1rem solid #E4E7EC;
+
 }
 
 .warning {
-    width: 80%;
+    flex: 3;
+    display: flex;
 }
 
 /* DASHBOARD TABLE */
 
-.table-container {
-    width: 100%;
-}
 
-table {
+.table-container table {
     font-family:"Anybody", sans-serif;
     border-collapse: collapse;
+    height: fit-content;
     width: 100%;
-    border: 1px solid #E4E7EC;
-    border-radius: 10px;
   }
+
+  tr {
+    width: 100%;
+  }
+
   
   td, th {
     text-align: left;

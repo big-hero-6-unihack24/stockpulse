@@ -11,19 +11,20 @@ function Dashboard({ selectedTickers }) {
             <div className="dashboard-heading">
                 <div className="heading">
                     <h3>
-                        <span className="your-dashboard">Your Dashboard</span>
-                        <span className="investor-relation">Investor Relation</span>
+                        <span className="your-dashboard">Your Portfolio</span>
+                        {/* <span className="investor-relation">Investor Relation</span> */}
                     </h3>
                 </div>
                 <div className="heading-button">
-                    <span><button className="download"><SlCloudDownload /> Download CSV</button></span>
-                    <span><button className="add"><IoAdd /> Add IR</button></span>
+                    <h3><span className="your-dashboard">Warnings</span></h3>
+                    {/* <span><button className="download"><SlCloudDownload /> Download CSV</button></span>
+                    <span><button className="add"><IoAdd /> Add IR</button></span> */}
                 </div>
 
             </div>
             <div className="dashboard-table">
-                <div><TrackingForm selectedTickers={selectedTickers}/></div>
-                <div><LatestWarn/></div>
+                <TrackingForm selectedTickers={selectedTickers}/>
+                <LatestWarn/>
 
             </div>
 

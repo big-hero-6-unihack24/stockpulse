@@ -51,7 +51,7 @@ function Input({ addSelectedTicker }) {
     };
 
     return (
-        <div>
+        <div class="input-section">
             <form className="input-bar" onSubmit={handleSubmit}>
                 <span className="select-container">
                     <Select

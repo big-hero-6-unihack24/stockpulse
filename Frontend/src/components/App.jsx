@@ -17,7 +17,7 @@ function App() {
         
     }
     return (
-        <div>
+        <div class="master-container">
             <LogoBar/>
             <Header tagline="Revolutionize your investments with real-time, data-driven insights and alerts on the stock movements post-earnings."/>
             <Input addSelectedTicker={addSelectedTicker}/>
