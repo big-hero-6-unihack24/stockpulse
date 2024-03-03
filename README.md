@@ -42,7 +42,7 @@ Download dependencies for NodeJS
 cd frontend
 npm install
 ```
-Set up environment variable
+Set up environment variable to connect with backend
 ```
 echo REACT_APP_BACKEND_URL=localhost:8000 >> .env
 ```
@@ -51,39 +51,20 @@ Start frontend server. Upon startup, the server is accessible at localhost:3000
 npm start
 ```
 
+# How we built it
+Our project contains both frontend and backend components. The scripts, packages, and APIs we used in this project are as follows:
 
+## Frontend
+Our frontend is built on ReactJS framework. HTML and CSS are used to define the structure and aesthetic of the web app. JavaScript is used to dynamically control components of frontend and interact with backend. 
+For live site, we hosted the frontend on Github Pages and deployed it using Github Actions for continuous integration/continuous deployment.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Setting Up Python Virtual Environments and Running the Backend Server
-
-### Set up python virtual environments with all packages required
-```bash
-pip install -r requirements.txt
+## Backend
+Our backend is built using FastAPI run on Uvicorn server. The following tech stack are used in our backend.
+## Web-scraping
+BeautifulSoup and PyPDF libraries are used to scrape and extract latest earnings/financials release on companies' investors relation websites to text format.
+In addition, we extract history financial data of the tracked company from Yahoo Finance using yfinance libary. Yahoo Finance normally takes 2-3 days to update with new fiancial releases, so data scrapped from investors relation websites will not exist on Yahoo Finance at the moment StockPulse perform analysis.
+## Process the information
+We then leverage OpenAI's gpt-3.5-turbo model to extract the key financial information from text data scrapped and provide a quick summary release.
+After that, the combined data from Yahoo Finance and company's website is fed into our AI model to predict if there is potential big move in share price a day after earning release.
+## AI model
+We built a neural network model, using Tensorflow, to process data and provide a prediction.
