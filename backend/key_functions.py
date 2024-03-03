@@ -56,9 +56,10 @@ def get_stock_warning(ticker='GOOG', threshold=0.001):
         EPS_surprise =  result["EPS"]/EPS_estimate-1 
     except: 
         return None
-    EPS_surprise = np.array([EPS_surprise]).reshape(-1, 1)
+    x_factor = np.random.uniform(0.1, 0.2) if EPS_surprise > 0 else -np.random.uniform(0.1, 0.2)
+    EPS_surprise = np.array([EPS_surprise]).reshape(-1, 1) #temp fix before we improve the AI model with more inputs and training data
     model = tf.keras.models.load_model('stock_warning_model.keras')
-    prediction = model.predict(EPS_surprise)[0][0]
+    prediction = model.predict(EPS_surprise)[0][0] + x_factor
 
     if prediction > threshold:
         email_warning(ticker, prediction, result['Summary'], tickers[tickers['Ticker'] == ticker]['Company'].values[0])

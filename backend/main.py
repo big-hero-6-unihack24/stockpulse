@@ -66,7 +66,7 @@ async def debug():
             'user_email': key_functions.user_email,
             'allowed_origins': cors_allowed_origins_list,
             'allowed_hosts': cors_allowed_hosts_list,
-            'containter_tag': 'v7'}
+            'containter_tag': 'v8'}
 
 
 
