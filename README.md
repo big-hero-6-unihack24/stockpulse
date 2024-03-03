@@ -24,6 +24,23 @@ The core mission of StockPulse is to streamline your investment strategy by:
 - AI-Driven Insights: Sophisticated analysis of earnings reports to highlight potential market movements.
 - User-Centric Design: Tailored for retail investors seeking a balance between their investment portfolio and busy lifestyle.
 
+# How to run
+## Backend
+Download dependencies for python environment
+```pip install -r .\backend\requirements.txt
+Start FastAPI server. Upon startup, the server is accessible at localhost:8000
+```cd backend
+```uvicorn main:app --reload
+
+## Frontend
+Download dependencies for NodeJS
+```cd frontend
+```npm install
+Set up environment variable
+```echo REACT_APP_BACKEND_URL=localhost:8000 >> .env
+Start frontend server. Upon startup, the server is accessible at localhost:3000
+```npm start
+
 
 
 
