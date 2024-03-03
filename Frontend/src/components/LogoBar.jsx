@@ -15,7 +15,7 @@ function LogoBar() {
    const updateEmail = async () => {
     try {
         const url = 'https://stockpulse-api.azurewebsites.net/update-email';
-        const payload = { email: email }; // Ensure this matches the expected schema
+        const payload = { email: email };
         await axios.post(url, payload, {
             headers: {
                 'Content-Type': 'application/json'
