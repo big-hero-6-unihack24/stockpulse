@@ -51,20 +51,40 @@ Start frontend server. Upon startup, the server is accessible at localhost:3000
 npm start
 ```
 
-# How we built it
-Our project contains both frontend and backend components. The scripts, packages, and APIs we used in this project are as follows:
+# How We Built It
+Our project seamlessly integrates frontend and backend components, leveraging a variety of scripts, packages, and APIs to deliver a comprehensive solution. Here's a breakdown of the technologies and methodologies we employed:
 
 ## Frontend
-Our frontend is built on ReactJS framework. HTML and CSS are used to define the structure and aesthetic of the web app. JavaScript is used to dynamically control components of frontend and interact with backend. 
-For live site, we hosted the frontend on Github Pages and deployed it using Github Actions for continuous integration/continuous deployment.
+The user interface of our application is powered by the ReactJS framework, utilizing HTML and CSS for structuring and styling, respectively. JavaScript plays a crucial role in dynamically managing frontend components and facilitating interaction with the backend. To ensure a smooth and continuous deployment process, we hosted the frontend on GitHub Pages and utilized GitHub Actions for CI/CD, enabling automatic updates and deployments.
+
 
 ## Backend
-Our backend is built using FastAPI run on Uvicorn server. The following tech stack are used in our backend.
-## Web-scraping
-BeautifulSoup and PyPDF libraries are used to scrape and extract latest earnings/financials release on companies' investors relation websites to text format.
-In addition, we extract history financial data of the tracked company from Yahoo Finance using yfinance libary. Yahoo Finance normally takes 2-3 days to update with new fiancial releases, so data scrapped from investors relation websites will not exist on Yahoo Finance at the moment StockPulse perform analysis.
-## Process the information
-We then leverage OpenAI's gpt-3.5-turbo model to extract the key financial information from text data scrapped and provide a quick summary release.
-After that, the combined data from Yahoo Finance and company's website is fed into our AI model to predict if there is potential big move in share price a day after earning release.
-## AI model
-We built a neural network model, using Tensorflow, to process data and provide a prediction.
+
+### Server
+Our backend infrastructure is built on the FastAPI framework, known for its high performance, and is served via a Uvicorn ASGI server. This combination offers a robust and scalable solution for our application's needs.
+
+### Web-scraping
+To gather the latest earnings and financial releases, we employed BeautifulSoup and PyPDF2 for scraping data from companies' investor relations websites, converting it into a text format for further processing. Additionally, historical financial data is sourced from Yahoo Finance using the yfinance library. Given Yahoo Finance's update latency of 2-3 days post-release, our direct scraping from investor relations sites ensures timely data retrieval, critical for our analysis.
+
+
+### Process the information
+We utilize OpenAI's GPT-3.5-turbo model to distill key financial insights from the scraped text data, providing succinct summaries of earnings releases. This processed information, combined with data from Yahoo Finance, feeds into our predictive model to assess potential significant stock price movements following an earnings announcement.
+
+### AI model
+At the heart of our predictive capability is a custom-built neural network model, developed using TensorFlow. This model analyzes the amalgamated data to forecast potential shifts in stock prices, offering our users valuable insights to inform their investment decisions.
+
+
+# Challenges We Encountered
+One of the primary challenges we faced was sourcing the financial data necessary to train our model. Accessing comprehensive and accurate data often required premium API subscriptions, which posed a significant obstacle. Additionally, constructing a meaningful AI model within a constrained timeframe proved to be a daunting task. These challenges tested our resolve and pushed us to think creatively in our approach.
+
+# Future Directions for StockPulse
+As we look to the horizon, we have identified several key enhancements to elevate StockPulse's capabilities:
+
+- Enriching AI Analysis: Integrating additional factors into our AI's analytical framework to provide deeper insights.
+- Model Optimization: Refining our AI model to achieve greater accuracy and reliability in its predictions.
+- Comprehensive Monitoring: Extending our platform's capabilities to include alerts on news and events related to tracked companies, offering a more holistic view of potential impacts.
+- Market Trend Detection: Analyzing real-time stock prices to identify emerging market trends, enabling users to make more informed decisions.
+- Dashboard Implementation: Developing a user-friendly dashboard to offer users a comprehensive overview of their portfolio and individual stock performance.
+
+# Our Proud Achievements
+Embarking on the StockPulse project was a journey of many firsts for us. It marked our inaugural venture into developing a live project as a team within a limited timeframe. For all of us, this was the first hackathon experience, introducing us to the exhilarating process of transforming an idea into reality alongside a newly formed team. This experience was a crucible of learning, from mastering project management skills to rapidly acquiring and applying new coding techniques. We take pride in not just the technical skills we've honed but also in the invaluable lessons learned in teamwork, perseverance, and innovation.
