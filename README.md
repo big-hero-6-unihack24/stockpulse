@@ -1,6 +1,8 @@
 # StockPulse
 Revolutionize your investments with real-time, data-driven insights and alerts tailored to stock movements post-earnings, designed to keep you one step ahead in the market.
 
+Visit our live website at [https://big-hero-6-unihack24.github.io/stockpulse/](https://big-hero-6-unihack24.github.io/stockpulse/)
+
 # Inspiration
 Are you a fundamental stock investor?
 
