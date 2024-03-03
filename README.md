@@ -27,10 +27,12 @@ The core mission of StockPulse is to streamline your investment strategy by:
 # How to run
 ## Backend
 Download dependencies for python environment
-```pip install -r .\backend\requirements.txt
+```pip install -r .\backend\requirements.txt```
 Start FastAPI server. Upon startup, the server is accessible at localhost:8000
-```cd backend
-```uvicorn main:app --reload
+```
+cd backend
+uvicorn main:app --reload
+```
 
 ## Frontend
 Download dependencies for NodeJS
