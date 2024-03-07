@@ -21,7 +21,7 @@ function App() {
             <LogoBar/>
             <Header tagline="Revolutionize your investments with real-time, data-driven insights and alerts on the stock movements post-earnings."/>
             <Input addSelectedTicker={addSelectedTicker}/>
-            <Dashboard selectedTickers={selectedTickers}/>
+            <Dashboard selectedTickers={selectedTickers} setSelectedTickers={setSelectedTickers}/>
 
         </div>
     )
