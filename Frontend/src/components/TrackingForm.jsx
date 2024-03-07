@@ -1,13 +1,11 @@
 import React from "react";
 import { BsApp } from "react-icons/bs";
 import { TfiTrash } from "react-icons/tfi";
-
-import { LuPen } from "react-icons/lu";
 import "../styles.css";
 
 class TrackingForm extends React.Component {
     render() {
-        const { selectedTickers =[] } = this.props;
+        const { selectedTickers =[], removeTicker } = this.props;
         return (
             
                 <table className="table-container">
@@ -21,8 +19,8 @@ class TrackingForm extends React.Component {
                         <td><BsApp /></td>
                         <td>{ticker.label}</td>
                         <td className="symbol">{ticker.value}</td>
-                        <td><TfiTrash /></td>
-                        <td><LuPen/></td>
+                        <td><TfiTrash onClick={() => removeTicker(ticker.value)}/></td>
+                    
 
                         </tr>
                     ))}
