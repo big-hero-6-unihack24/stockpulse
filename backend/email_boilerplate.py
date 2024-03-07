@@ -1,5 +1,5 @@
 html_content = """
-    <html>
+<html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,16 +22,13 @@ html_content = """
                 border-radius: 5px;
                 background-color: #ffffff;
                 box-shadow: 0px 1px 0px #111f1f;
-                max-width: 1000px;
-                min-width: 900px;
+                max-width:800px;
+                min-width: 278px;
             }}
             .flex {{
-                display: flex;
+                display: block;
                 text-align: center;
-                justify-content: center;
                 width: 100%;
-                padding: 2% 30% 2%;
-                padding-left: 20
             }}
             #stock-name {{
                 font-size: 2em;
@@ -40,16 +37,15 @@ html_content = """
                 text-align: center;
             }}
             #potential-forecast{{
-                padding: 2%;
+                padding: 1%;
                 text-align: center;
                 font-family: 'Anybody', Arial, sans-serif;
                 font-weight: bold;
-                margin-bottom: 2%;
             }}
             #forecast-container {{
                 margin-top: 2%;
+                margin-bottom: 5%;
             }}
-
             #stock-alert-title{{
                 font-size: 2em;
                 font-weight: 600;
@@ -75,8 +71,8 @@ html_content = """
                 font-family: 'Anybody', Arial, sans-serif;
             }}
             #summary-container {{
-                background-color: #F0C808;
                 border-radius: 5px;
+                border: #F0C808 solid 2px;
             }}
             #content-container{{
                 padding: 0% 2% 2%;
@@ -98,7 +94,6 @@ html_content = """
                 color: #DD1C1A;
             }}
             #stock-container{{
-                /* margin-right: 5%; */
                 padding: 5%;
             }}
             #company-name{{
@@ -116,7 +111,7 @@ html_content = """
             #date-container{{
                 text-align: center;
                 font-weight: bold;
-                margin-bottom: 2%;
+                margin-bottom: 5%;
             }}
             p {{
                 font-size: 1.1em;
@@ -133,7 +128,7 @@ html_content = """
                     <div id="urgent-action">
                         Urgent Action Needed !
                     </div>
-                    <p id="introduction">Our AI detected a potential drastic price change. The stock in question can be seen below.</p>
+                    <p id="introduction">A drastic change in stock has been detected. The stock in question can be seen below.</p>
                     <div class="flex">
                         <div id="stock-container">
                             <div id="stock-name">
@@ -148,7 +143,7 @@ html_content = """
                                 Potential Forecasted Change
                             </div>
                             <div id="percent-change">
-                                {}%
+                                {}
                             </div>
                         </div>
                     </div>
@@ -165,7 +160,7 @@ html_content = """
                     </div>
                     
                     <div id="closing-container">
-                        <p>Please look at the earnings release. We hope this information was useful.</p>
+                        <p>Please look at your earnings. We hope this information was useful.</p>
                         <p>All the best,<br> StockPulse Team</p>
                     </div>
                 </div>
@@ -173,4 +168,4 @@ html_content = """
         </div>
     </body>
     </html>
-    """
+"""

@@ -14,7 +14,24 @@ body {
 .logo-container {
     padding: 48px 138px;
     background-color: #DDE4E5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
+.user-email {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.email-input {
+    padding: 12px;
+    border: 0;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
 
 .logo h3 {
     display: flex;
@@ -76,6 +93,9 @@ body {
     height: 10vh;
     padding-bottom: 128px;
 }
+.select-container {
+    min-width: 300px;
+}
 
 .input-bar form {
     display: flex;
@@ -86,6 +106,16 @@ body {
 }
 
 
+.input-bar input {
+    padding: 24px 32px;
+    outline: 0;
+    border: 0;
+    font-family:"Anybody", sans-serif;
+}
+
+.email-input {
+    font-family:"Anybody", sans-serif;
+}
 .input-bar button {
     border: 0;
     padding: 24px 16px;
@@ -115,7 +145,6 @@ body {
     margin-right: 8px;
    
  
-  
 }
 
 .investor-relation {
@@ -147,21 +176,28 @@ body {
 }
 
 .dashboard-table {
-    margin-top: 48px;
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    margin-top: 48px;
+    justify-content:space-between;
+    gap: 300px;   
 }
+
 
 /* DASHBOARD TABLE */
 
+.table-container {
+    width: 80%;
+}
 
 table {
     font-family:"Anybody", sans-serif;
     border-collapse: collapse;
-    width: 100%;
     border: 1px solid #E4E7EC;
     border-radius: 10px;
+  }
+  tr {
+    align-items: center;
   }
   
   td, th {
@@ -171,10 +207,11 @@ table {
 
   th {
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
   }
   td {
     font-size: 14px;
+    font-weight: 400;
   }
   
   tr:nth-child(even) {
@@ -191,8 +228,34 @@ table {
     color: #5D6979;
     font-size: 12px;
   }
+/* LATEST WARNING */
 
-
-.warning {
-    margin-left: 3rem;
+.warning-container {
+    width: 100%;
 }
+
+
+.prediction-positive {
+    color: green;
+  }
+  
+  .prediction-negative {
+    color: red;
+  }
+
+  .warning-ticker {
+    font-size: 24px;
+  }
+
+  .summary-earnings {
+    color: #5D6979;
+  }
+
+  
+
+  
+
+
+
+
+

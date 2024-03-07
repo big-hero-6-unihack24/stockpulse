@@ -32,7 +32,7 @@ def extract_financials_info_from_earning_release_using_GPT(text):
   instruction = "You are an assistant helping me to extract financial information from earnings releases of companies. Attachment will be provided.\
             Firstly, I will need quarterly revenue growth and earning per shares.\
             Secondly, I also need a summary of the earnings release regarding revenue, margin and guidance for revenue growth this year if any numbers are provided. \
-            Provide 1 sentence summary for each factor. \
+            Provide 1 sentence summary for each factor. Total length of summary is no more than 20 words. \
             Response should be in this format: rev_grwth: x%; EPS: $y; Summary: \n First point \n Second point .... \
             All numbers should be rounded to 2 decimal places. Negative numbers should be indicated with a minus sign."
 

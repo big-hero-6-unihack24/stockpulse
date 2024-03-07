@@ -1,84 +1,83 @@
 import "../styles.css";
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import axios from 'axios';
 
-function Input() {
-
-    const [ticker, setTicker] = useState('');
+function Input({ addSelectedTicker }) {
     const [tickerOptions, setTickerOptions] = useState([]);
     const [selectedTicker, setSelectedTicker] = useState(null);
-    const [submitTicker, setSubmitTicker] = useState(null);
 
     useEffect(() => {
+        const fetchTickerOptions = async () => {
+            try {
+                const url = `${process.env.REACT_APP_BACKEND_URL}/ticker-options`;
+                const response = await axios.get(url);
+                console.log('Fetched ticker options:', response.data);
+                const options = response.data.Tickers.map(ticker => ({ label: ticker, value: ticker }));
+                setTickerOptions(options);
+            } catch (error) {
+                console.error('Error fetching tickers:', error);
+            }
+        };
+
         fetchTickerOptions();
-      });
+    }, []);
 
-    const fetchTickerOptions = async (ticker) => {
-    try {
-        let url = `${process.env.REACT_APP_BACKEND_URL}/ticker-options`;
-        const response = await axios.get(url);
-        let options = []; // Declare options as an empty array
-        if(response.data && response.data.Tickers) {
-            options = response.data.Tickers.map(ticker => ({ label: ticker, value: ticker }));
-            console.log('options: ', options);
-        }
-        setTickerOptions(options);
-        console.log('tickerOptions: ', tickerOptions);
-        return options;
-    } catch (error) {
-        console.error('Error fetching tickers: ', error);
-    }
+    const handleChange = (selectedOption) => {
+        setSelectedTicker(selectedOption);
+        
     };
-
-    const handleTickerChange = (newValue) => {
-        setTicker(newValue);
-        return newValue;
-    };
-
-    const handleChange = (selectedTicker) => {
-        setTicker(selectedTicker);
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-          setSubmitTicker(selectedTicker);
-        //   const response = await axios.post();
-        } catch (error) {
-          console.error('Error fetching data: ', error);
+        if (selectedTicker) {
+            addSelectedTicker(selectedTicker);
+            setSelectedTicker(null);
         }
+        console.log('Submitting ticker:', selectedTicker);
+    
+    };
+
+    const customSelectStyles = {
+        control: (provided) => ({
+            ...provided,
+            borderRadius: '10px 0 0 10px',
+            padding: '12px 32px',
+            border: '0',
+            boxShadow: 'none',
+            outline: '0',
+            
+        }),
     };
 
     return (
-        <div className="input-bar">
-            {/* <span><input className="ticker" type="text" placeh</form>older="Select stock to track..."></input></span> */}
-            <form onSubmit={handleSubmit}>
-                <Select
-                    className='ticker'
-                    name="ticker"
-                    inputValue={ticker}
-                    onInputChange={handleTickerChange}
-                    onChange={handleChange}
-                    options={tickerOptions}
-                    placeholder="Select stock to track..."
-                />
-                <input 
-                    className="threshold" 
-                    type="number" 
-                    step="0.01" 
-                    placeholder="Set threshold (in %).."
-                />
-                <button type="submit" class="button">Submit</button>
+        <div>
+            <form className="input-bar" onSubmit={handleSubmit}>
+                <span className="select-container">
+                    <Select
+                        className='ticker'
+                        name="ticker"
+                        value={selectedTicker}
+                        options={tickerOptions}
+                        onChange={handleChange}
+                        placeholder="Select stock to track..."
+                        styles={customSelectStyles}
+                    />
+                </span>
+                <span>
+                    <input 
+                        className="threshold" 
+                        type="number" 
+                        step="0.01" 
+                        placeholder="Set threshold (in %).." 
+                    />
+                </span>
+                <span>
+                    <button type="submit" className="button" >Submit</button>
+                </span>
             </form>
-                
-            {/* </span> */}
-            {/* <span><input className="threshold" type="text" placeholder="What is your threshold?..."></input></span> */}
-            {/* <span><button>Submit</button></span> */}
-
-
         </div>
-    )
+    );
 }
 
 export default Input;
