@@ -24,7 +24,7 @@ function Dashboard({ selectedTickers }) {
             </div>
             <div className="dashboard-table">
                 <TrackingForm selectedTickers={selectedTickers}/>
-                <LatestWarn/>
+                <LatestWarn selectedTickers={selectedTickers}/>
 
             </div>
 
