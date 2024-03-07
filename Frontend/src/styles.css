@@ -5,50 +5,24 @@
     padding: 0;
 }
 
-html {
-    height: 100vh;
-    
-}
-
 body {
     font-family:"Anybody", sans-serif;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-body > div {
-    width: 100%;
-}
-
-.master-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
 }
 
 /* LOGO BAR */
 
 .logo-container {
-    width: 100%;
-    padding: 2rem 5rem;
+    padding: 48px 138px;
     background-color: #DDE4E5;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    border: none;
-}
 
+}
 .user-email {
     display: flex;
     flex-direction: row;
-    gap: 0.8rem;
+    gap: 8px;
 }
 
 .email-input {
@@ -84,14 +58,12 @@ body > div {
 /* HEADER */
 
 .top {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 0;
-    gap: 1.5rem;
+    padding: 64px 0;
+    gap: 24px;
     background-color: #DDE4E5;
-    border: none;
 }
 
 .top h1 {
@@ -110,14 +82,6 @@ body > div {
 }
 
 /* INPUT */
-.input-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #DDE4E5;
-    border: none;
-}
 
 .input-bar {
     display: flex;
@@ -126,7 +90,8 @@ body > div {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 3rem 0rem;
+    height: 10vh;
+    padding-bottom: 128px;
 }
 .select-container {
     min-width: 300px;
@@ -166,23 +131,13 @@ body > div {
 
 /* DASHBOARD HEADING */
 .dashboard-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 5rem;
-    gap: 1.5rem;
-    border: none;
-    box-sizing: border-box;
+    padding: 64px 138px;
 }
 
 .dashboard-heading {
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
 }
 
 .your-dashboard {
@@ -223,38 +178,27 @@ body > div {
 .dashboard-table {
     width: 100%;
     display: flex;
-    margin-top: 3rem;
+    margin-top: 48px;
     justify-content:space-between;
-    gap: 5rem;
+    gap: 300px;   
 }
 
-.table-container {
-    flex: 2;
-    display: flex;
-    min-width: 40%;
-    border: 0.1rem solid #E4E7EC;
-
-}
-
-.warning {
-    flex: 3;
-    display: flex;
-}
 
 /* DASHBOARD TABLE */
 
+.table-container {
+    width: 80%;
+}
 
-.table-container table {
+table {
     font-family:"Anybody", sans-serif;
     border-collapse: collapse;
-    height: fit-content;
-    width: 100%;
+    border: 1px solid #E4E7EC;
+    border-radius: 10px;
   }
-
   tr {
-    width: 100%;
+    align-items: center;
   }
-
   
   td, th {
     text-align: left;
@@ -263,10 +207,11 @@ body > div {
 
   th {
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
   }
   td {
     font-size: 14px;
+    font-weight: 400;
   }
   
   tr:nth-child(even) {
@@ -285,44 +230,10 @@ body > div {
   }
 /* LATEST WARNING */
 
-.warning {
-    display: flex;
-    flex-direction: column;
-    justify-content: right;
-    gap: 12px;
-    padding: 48px;
-    border: 1px solid #DDE4E5;
+.warning-container {
+    width: 100%;
 }
 
-.warning-day {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.warning-infor {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.warning-ticker {
-
-    margin: 32px auto;
-}
-.warning-ticker h3 {
-    font-size: 48px;
-}
-
-.warning-potential {
-   margin: auto;
-   margin-bottom: 24px;
-}
-
-.prediction-value {
-    font-size: 20px;
-    font-weight: 600;
-}
 
 .prediction-positive {
     color: green;
@@ -332,15 +243,15 @@ body > div {
     color: red;
   }
 
-  .warning-sum {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  .warning-ticker {
+    font-size: 24px;
   }
-  .warning-sum p {
-    color: #5D6979;
 
+  .summary-earnings {
+    color: #5D6979;
   }
+
+  
 
   
 
