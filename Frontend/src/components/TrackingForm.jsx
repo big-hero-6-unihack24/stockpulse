@@ -7,10 +7,10 @@ import "../styles.css";
 
 class TrackingForm extends React.Component {
     render() {
-        const { selectedTickers } = this.props;
+        const { selectedTickers =[] } = this.props;
         return (
-            <div className="table-container">
-                <table>
+            
+                <table className="table-container">
                     <tr>
                         <th><BsApp /></th>
                         <th>Name</th>
@@ -18,20 +18,17 @@ class TrackingForm extends React.Component {
                     </tr>
                     {selectedTickers.map((ticker, index) => (
                         <tr key={index}>
-                            <td><BsApp /></td>
-                            <td className="td-name">
-                                <div>{ticker.icon} </div>
-                                <div>{ticker.label}</div>
-                            </td>
-                            <td className="symbol">{ticker.value}</td>
-                            <td><TfiTrash /></td>
-                            <td><LuPen/></td>
+                        <td><BsApp /></td>
+                        <td>{ticker.label}</td>
+                        <td className="symbol">{ticker.value}</td>
+                        <td><TfiTrash /></td>
+                        <td><LuPen/></td>
 
                         </tr>
                     ))}
   
                 </table>
-            </div>
+         
         )
 
     }
