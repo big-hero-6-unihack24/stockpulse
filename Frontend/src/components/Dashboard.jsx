@@ -5,7 +5,11 @@ import { IoAdd } from "react-icons/io5";
 import TrackingForm from "./TrackingForm";
 import LatestWarn from "./LatestWarn";
 
-function Dashboard({ selectedTickers }) {
+function Dashboard({ selectedTickers, setSelectedTickers }) {
+     const removeTicker = (tickerValue) => {
+        const updateTickers = selectedTickers.filter(ticker => ticker.value !== tickerValue);
+        setSelectedTickers(updateTickers);
+    }
     return(
         <div className="dashboard-container">
             <div className="dashboard-heading">
@@ -23,7 +27,7 @@ function Dashboard({ selectedTickers }) {
 
             </div>
             <div className="dashboard-table">
-                <TrackingForm selectedTickers={selectedTickers}/>
+                <TrackingForm selectedTickers={selectedTickers} removeTicker={removeTicker}/>
                 <LatestWarn selectedTickers={selectedTickers}/>
 
             </div>
